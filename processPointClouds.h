@@ -20,6 +20,9 @@
 #include <unordered_set>
 #include "render/box.h"
 #include "kdtree.h"
+#include "render/render.h"
+
+
 
 template<typename PointT>
 class ProcessPointClouds {
@@ -43,6 +46,9 @@ public:
 
     std::vector<typename pcl::PointCloud<PointT>::Ptr> Clustering(typename pcl::PointCloud<PointT>::Ptr cloud, float clusterTolerance, int minSize, int maxSize);
     
+
+   void clusterHelper(int indice, typename pcl::PointCloud<PointT>::Ptr cloud, std::vector<int>& cluster, std::vector<bool>& processed, KdTree* tree, float distanceTol);
+
     std::vector<typename pcl::PointCloud<PointT>::Ptr> euclideanCluster(typename pcl::PointCloud<PointT>::Ptr cloud, KdTree* tree, float distanceTol, int minSize, int maxSize);
 
 

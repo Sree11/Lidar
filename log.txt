@@ -1,0 +1,31 @@
+[ 25%] Building CXX object CMakeFiles/environment.dir/src/environment.cpp.o
+/home/workspace/SFND_Lidar_Obstacle_Detection/src/environment.cpp: In function 'void cityBlock(pcl::visualization::PCLVisualizer::Ptr&, ProcessPointClouds<pcl::PointXYZI>, pcl::PointCloud<pcl::PointXYZI>::Ptr)':
+/home/workspace/SFND_Lidar_Obstacle_Detection/src/environment.cpp:124:54: error: no matching function for call to 'KdTree::insert(__gnu_cxx::__alloc_traits<Eigen::aligned_allocator<pcl::PointXYZI> >::value_type&, int&)'
+         tree->insert(segmentCloud.first->points[i], i);
+                                                      ^
+In file included from /home/workspace/SFND_Lidar_Obstacle_Detection/src/processPointClouds.h:22:0,
+                 from /home/workspace/SFND_Lidar_Obstacle_Detection/src/environment.cpp:7:
+/home/workspace/SFND_Lidar_Obstacle_Detection/src/kdtree.h:39:7: note: candidate: void KdTree::insert(std::vector<float>, int)
+  void insert(std::vector<float> point, int id)
+       ^
+/home/workspace/SFND_Lidar_Obstacle_Detection/src/kdtree.h:39:7: note:   no known conversion for argument 1 from '__gnu_cxx::__alloc_traits<Eigen::aligned_allocator<pcl::PointXYZI> >::value_type {aka pcl::PointXYZI}' to 'std::vector<float>'
+In file included from /home/workspace/SFND_Lidar_Obstacle_Detection/src/environment.cpp:9:0:
+/home/workspace/SFND_Lidar_Obstacle_Detection/src/processPointClouds.cpp: In instantiation of 'void ProcessPointClouds<PointT>::clusterHelper(int, typename pcl::PointCloud<PointT>::Ptr, std::vector<int>&, std::vector<bool>&, KdTree*, float) [with PointT = pcl::PointXYZI; typename pcl::PointCloud<PointT>::Ptr = boost::shared_ptr<pcl::PointCloud<pcl::PointXYZI> >]':
+/home/workspace/SFND_Lidar_Obstacle_Detection/src/processPointClouds.cpp:280:26:   required from 'std::vector<typename pcl::PointCloud<PointT>::Ptr> ProcessPointClouds<PointT>::euclideanCluster(typename pcl::PointCloud<PointT>::Ptr, KdTree*, float, int, int) [with PointT = pcl::PointXYZI; typename pcl::PointCloud<PointT>::Ptr = boost::shared_ptr<pcl::PointCloud<pcl::PointXYZI> >]'
+/home/workspace/SFND_Lidar_Obstacle_Detection/src/environment.cpp:128:140:   required from here
+/home/workspace/SFND_Lidar_Obstacle_Detection/src/processPointClouds.cpp:257:76: error: no matching function for call to 'KdTree::search(__gnu_cxx::__alloc_traits<Eigen::aligned_allocator<pcl::PointXYZI> >::value_type&, float&)'
+  std::vector<int> nearest = tree->search(cloud->points[indice], distanceTol);
+                                                                            ^
+In file included from /home/workspace/SFND_Lidar_Obstacle_Detection/src/processPointClouds.h:22:0,
+                 from /home/workspace/SFND_Lidar_Obstacle_Detection/src/environment.cpp:7:
+/home/workspace/SFND_Lidar_Obstacle_Detection/src/kdtree.h:66:19: note: candidate: std::vector<int> KdTree::search(std::vector<float>, float)
+  std::vector<int> search(std::vector<float> target, float distanceTol)
+                   ^
+/home/workspace/SFND_Lidar_Obstacle_Detection/src/kdtree.h:66:19: note:   no known conversion for argument 1 from '__gnu_cxx::__alloc_traits<Eigen::aligned_allocator<pcl::PointXYZI> >::value_type {aka pcl::PointXYZI}' to 'std::vector<float>'
+CMakeFiles/environment.dir/build.make:62: recipe for target 'CMakeFiles/environment.dir/src/environment.cpp.o' failed
+make[2]: *** [CMakeFiles/environment.dir/src/environment.cpp.o] Error 1
+CMakeFiles/Makefile2:72: recipe for target 'CMakeFiles/environment.dir/all' failed
+make[1]: *** [CMakeFiles/environment.dir/all] Error 2
+Makefile:83: recipe for target 'all' failed
+make: *** [all] Error 2
+root@33af45fb8706:/home/workspace/SFND_Lidar_Obstacle_Detection/build# 
